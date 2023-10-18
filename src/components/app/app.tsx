@@ -12,7 +12,7 @@ import PageNotFound from '../../pages/page-not-found/page-not-found';
 
 function App() {
   return (
-	  <HelmetProvider>
+    <HelmetProvider>
       <BrowserRouter>
         <Routes>
           <Route
@@ -45,7 +45,7 @@ function App() {
               path="*"
               element={<PageNotFound />}
             />
-		      </Route>
+          </Route>
         </Routes>
       </BrowserRouter>
     </HelmetProvider>

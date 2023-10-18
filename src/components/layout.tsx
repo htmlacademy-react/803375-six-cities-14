@@ -1,7 +1,7 @@
 import {Outlet} from 'react-router-dom';
 
 function Layout () {
-	return (
+  return (
     <>
       <header className="header">
         <div className="container">
@@ -40,7 +40,7 @@ function Layout () {
         </a>
       </footer>
     </>
-	)
+  );
 }
 
 export default Layout;
