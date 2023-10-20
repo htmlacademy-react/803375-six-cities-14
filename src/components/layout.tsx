@@ -1,15 +1,16 @@
-import {Outlet} from 'react-router-dom';
+import {Outlet, Link} from 'react-router-dom';
+import {AppRoute} from '../const';
 
-function Layout () {
+export default function Layout () {
   return (
     <>
       <header className="header">
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <a className="header__logo-link header__logo-link--active">
+              <Link className="header__logo-link header__logo-link--active" to={AppRoute.Cities}>
                 <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41" />
-              </a>
+              </Link>
             </div>
             <nav className="header__nav">
               <ul className="header__nav-list">
@@ -35,12 +36,10 @@ function Layout () {
         <Outlet />
       </main>
       <footer className="footer container">
-        <a className="footer__logo-link" href="main.html">
+        <Link className="footer__logo-link" to={AppRoute.Cities}>
           <img className="footer__logo" src="img/logo.svg" alt="6 cities logo" width="64" height="33" />
-        </a>
+        </Link>
       </footer>
     </>
   );
 }
-
-export default Layout;

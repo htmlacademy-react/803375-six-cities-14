@@ -12,3 +12,11 @@ export enum AuthorizationStatus {
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN',
 }
+
+export enum PagesTitle {
+	Cities = 'Шесть городов',
+	Favorites = 'Шесть городов. Избранное',
+	Login = 'Шесть городов. Авторизация',
+	Offer = 'Шесть городов. Предложения',
+	PageNotFound = '404'
+}
