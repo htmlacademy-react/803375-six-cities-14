@@ -1,4 +1,4 @@
-function OfferCard<T> (elementIndex: T) {
+export default function OfferCard<T> (elementIndex: T) {
   return (
     <article className="cities__card place-card" data-id={elementIndex}>
       <div className="place-card__mark">
@@ -36,5 +36,3 @@ function OfferCard<T> (elementIndex: T) {
     </article>
   );
 }
-
-export default OfferCard;
