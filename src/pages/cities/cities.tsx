@@ -1,12 +1,15 @@
-import OfferCard from '../../components/offer-card';
+
 import SEO from '../../components/SEO';
+import OffersList from '../../components/offers-list';
+
+import {OffersType} from '../../types/offers';
 
 type CitiesScreenProps = {
-  offerCardCount: number;
+  offers: OffersType;
   pageTitle: string;
 }
 
-export default function Cities({offerCardCount, pageTitle}: CitiesScreenProps) {
+export default function Cities({offers, pageTitle}: CitiesScreenProps) {
   return (
     <>
       <SEO pageTitle={pageTitle} />
@@ -68,11 +71,7 @@ export default function Cities({offerCardCount, pageTitle}: CitiesScreenProps) {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                {
-                  [...Array(offerCardCount).keys()].map((el) => <OfferCard elementIndex = {el} key = {el} />)
-                }
-              </div>
+              <OffersList offers={offers} />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"></section>
