@@ -1,10 +1,8 @@
-export const OFFER_CARD_COUNT = 5;
-
 export enum AppRoute {
   Cities = '/',
   Favorites = '/favorites',
   Login = '/login',
-  Offer = '/offer/:id'
+  Offer = '/offer'
 }
 
 export enum AuthorizationStatus {
@@ -20,3 +18,5 @@ export enum PagesTitle {
 	Offer = 'Шесть городов. Предложения',
 	PageNotFound = '404'
 }
+
+export const STARS_COUNT = 5;
