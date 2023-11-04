@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './components/app/app';
+import App from './components/app';
 
-import { Offers } from './mocks/offers';
+import { OFFERS } from './mocks/offers';
+import { CITY } from './mocks/city';
+import { POINTS } from './mocks/points';
 
 
 const root = ReactDOM.createRoot(
@@ -11,6 +13,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App offers={Offers} />
+    <App offers={OFFERS} points={POINTS} city={CITY} />
   </React.StrictMode>
 );

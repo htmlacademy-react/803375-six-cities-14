@@ -1,20 +1,24 @@
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';
-import {AppRoute, AuthorizationStatus, PagesTitle} from '../../const';
-import {OffersType} from '../../types/offers';
-import Layout from '../layout';
-import PrivateRoute from '../private-route';
-import Cities from '../../pages/cities/cities';
-import Favorites from '../../pages/favorites/favorites';
-import Offer from '../../pages/offer/offer';
-import Login from '../../pages/login/login';
-import PageNotFound from '../../pages/page-not-found/page-not-found';
+import {AppRoute, AuthorizationStatus, PagesTitle} from '../const';
+import {OffersType} from '../types/offers';
+import {City} from '../types/city';
+import {Points} from '../types/points';
+import Layout from './layout';
+import PrivateRoute from './private-route';
+import Cities from '../pages/cities/cities';
+import Favorites from '../pages/favorites/favorites';
+import Offer from '../pages/offer/offer';
+import Login from '../pages/login/login';
+import PageNotFound from '../pages/page-not-found/page-not-found';
 
 type AppProps = {
 	offers: OffersType;
+	city: City;
+	points: Points;
 }
 
-export default function App({offers}: AppProps) {
+export default function App({offers, city, points}: AppProps) {
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -25,7 +29,7 @@ export default function App({offers}: AppProps) {
           >
             <Route
               index
-              element={<Cities offers={offers} pageTitle={PagesTitle.Cities} />}
+              element={<Cities offers={offers} pageTitle={PagesTitle.Cities} city={city} points={points} />}
             />
             <Route
               path={AppRoute.Favorites}

@@ -1,15 +1,28 @@
-
+import {useState} from 'react';
 import SEO from '../../components/SEO';
 import OffersList from '../../components/offers-list';
-
+import Map from '../../components/map';
 import {OffersType} from '../../types/offers';
+import {City} from '../../types/city';
+import {Points, Point} from '../../types/points';
 
 type CitiesScreenProps = {
   offers: OffersType;
   pageTitle: string;
+  city: City;
+  points: Points;
 }
 
-export default function Cities({offers, pageTitle}: CitiesScreenProps) {
+export default function Cities({offers, pageTitle, city, points}: CitiesScreenProps) {
+
+  const [selectedPoint, setSelectedPoint] = useState<Point | undefined> (
+    undefined
+  );
+  const handleListItemHover = (listItemName: string) => {
+    const currentPoint = points.find((point) => point.title === listItemName);
+    setSelectedPoint(currentPoint);
+  };
+
   return (
     <>
       <SEO pageTitle={pageTitle} />
@@ -71,10 +84,12 @@ export default function Cities({offers, pageTitle}: CitiesScreenProps) {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <OffersList offers={offers} />
+              <OffersList offers={offers} onListItemHover={handleListItemHover} />
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <section className="cities__map map">
+                <Map city={city} points={points} selectedPoint={selectedPoint} />
+              </section>
             </div>
           </div>
         </div>

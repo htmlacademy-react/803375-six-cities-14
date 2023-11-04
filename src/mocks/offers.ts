@@ -1,6 +1,6 @@
 import {OffersType} from '../types/offers';
 
-export const Offers: OffersType = [
+export const OFFERS: OffersType = [
   {
     bedrooms: 3,
     city: {
@@ -36,7 +36,7 @@ export const Offers: OffersType = [
     previewImage: 'img/apartment-01.jpg',
     price: 400,
     rating: 4.8,
-    title: 'Beautiful & luxurious studio at great location',
+    title: 'Beautiful & luxurious studio at great location 1',
     type: 'apartment'
   },
   {
@@ -74,7 +74,7 @@ export const Offers: OffersType = [
     previewImage: 'img/apartment-02.jpg',
     price: 120,
     rating: 4.8,
-    title: 'Beautiful & luxurious studio at great location',
+    title: 'Beautiful & luxurious studio at great location 2',
     type: 'apartment'
   },
   {
@@ -112,7 +112,7 @@ export const Offers: OffersType = [
     previewImage: 'img/apartment-03.jpg',
     price: 120,
     rating: 4.8,
-    title: 'Beautiful & luxurious studio at great location',
+    title: 'Beautiful & luxurious studio at great location 3',
     type: 'apartment'
   },
   {
@@ -150,7 +150,7 @@ export const Offers: OffersType = [
     previewImage: 'img/room.jpg',
     price: 120,
     rating: 4.8,
-    title: 'Beautiful & luxurious studio at great location',
+    title: 'Beautiful & luxurious studio at great location 4',
     type: 'apartment'
   },
 ];
