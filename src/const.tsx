@@ -19,7 +19,8 @@ export enum PagesTitle {
 	PageNotFound = '404'
 }
 
-export const STARS_COUNT = 5;
+export const MAX_STARS_COUNT = 5;
+export const PERCENT_MAX = 100;
 
 export const URL_MARKER_DEFAULT =
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg';

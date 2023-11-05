@@ -1,6 +1,6 @@
 import React from 'react';
 import {useState} from 'react';
-import {STARS_COUNT} from '../const';
+import {MAX_STARS_COUNT} from '../const';
 
 export default function CommentForm () {
 
@@ -19,7 +19,7 @@ export default function CommentForm () {
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
         {
-          React.Children.toArray([...Array(STARS_COUNT).keys()].map((i) =>
+          React.Children.toArray([...Array(MAX_STARS_COUNT).keys()].map((i) =>
             (
               <>
                 <input onChange={handleFieldChange} className="form__rating-input visually-hidden" name="rating" value={i + 1} id={`${i + 1}-stars`} type="radio" />
