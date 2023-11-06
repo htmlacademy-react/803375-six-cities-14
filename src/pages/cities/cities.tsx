@@ -2,20 +2,20 @@ import {useState} from 'react';
 import SEO from '../../components/SEO';
 import OffersList from '../../components/offers-list';
 import Map from '../../components/map';
-import {OffersType} from '../../types/offers';
-import {City} from '../../types/city';
-import {Points, Point} from '../../types/points';
+import {TOffers} from '../../types/offers';
+import {TCity} from '../../types/city';
+import {TPoints, TPoint} from '../../types/points';
 
 type CitiesScreenProps = {
-  offers: OffersType;
+  offers: TOffers;
   pageTitle: string;
-  city: City;
-  points: Points;
+  city: TCity;
+  points: TPoints;
 }
 
 export default function Cities({offers, pageTitle, city, points}: CitiesScreenProps) {
 
-  const [selectedPoint, setSelectedPoint] = useState<Point | undefined> (
+  const [selectedPoint, setSelectedPoint] = useState<TPoint | undefined> (
     undefined
   );
   const handleListItemHover = (listItemName: string) => {

@@ -1,6 +1,6 @@
-import {City} from '../types/city';
+import {TCity} from '../types/city';
 
-export const CITY: City = {
+export const CITY: TCity = {
   title: 'Amsterdam',
   lat: 52.370216,
   lng: 4.895168,

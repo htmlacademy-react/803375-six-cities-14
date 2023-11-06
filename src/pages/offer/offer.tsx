@@ -1,14 +1,23 @@
 import {useParams, Navigate} from 'react-router-dom';
-import {OffersType} from '../../types/offers';
+import {TOffers} from '../../types/offers';
+import {TReviews} from '../../types/reviews';
+import {TCity} from '../../types/city';
+import {TPoints, TPoint} from '../../types/points';
+import {getStarRating} from '../../helpers/get-star-rating';
+import Map from '../../components/map';
 import SEO from '../../components/SEO';
-import CommentForm from '../../components/comment-form';
+import ReviewsList from '../../components/reviews-list';
+import NearPlacesList from '../../components/near-places-list';
 
 type OfferScreenProps = {
   pageTitle: string;
-  offers: OffersType;
+  offers: TOffers;
+  reviews: TReviews;
+  points: TPoints;
+  city: TCity;
 }
 
-export default function Offer({offers, pageTitle}: OfferScreenProps) {
+export default function Offer({offers, reviews, pageTitle, points, city}: OfferScreenProps) {
 
   const params = useParams();
   const offer = offers.find((el) => Number(el.id) === Number(params.id));
@@ -16,6 +25,12 @@ export default function Offer({offers, pageTitle}: OfferScreenProps) {
   if (!offer) {
     return (<Navigate to="/" />);
   }
+
+  const selectedPoint: TPoint = {
+    lat: offer.location.latitude,
+    lng: offer.location.longitude,
+    title: offer.title
+  };
 
   return (
     <>
@@ -50,7 +65,7 @@ export default function Offer({offers, pageTitle}: OfferScreenProps) {
               </div>
               <div className="offer__rating rating">
                 <div className="offer__stars rating__stars">
-                  <span style={{ width: '80%' }}></span>
+                  <span style={{ width: getStarRating(offer.rating) }}></span>
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="offer__rating-value rating__value">{offer.rating}</span>
@@ -96,75 +111,15 @@ export default function Offer({offers, pageTitle}: OfferScreenProps) {
                   </p>
                 </div>
               </div>
-              <section className="offer__reviews reviews">
-                <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
-                <ul className="reviews__list">
-                  <li className="reviews__item">
-                    <div className="reviews__user user">
-                      <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                        <img className="reviews__avatar user__avatar" src="img/avatar-max.jpg" width="54" height="54" alt="Reviews avatar" />
-                      </div>
-                      <span className="reviews__user-name">
-                        Max
-                      </span>
-                    </div>
-                    <div className="reviews__info">
-                      <div className="reviews__rating rating">
-                        <div className="reviews__stars rating__stars">
-                          <span style={{ width: '80%' }}></span>
-                          <span className="visually-hidden">Rating</span>
-                        </div>
-                      </div>
-                      <p className="reviews__text">
-                        A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
-                      </p>
-                      <time className="reviews__time" dateTime="2019-04-24">April 2019</time>
-                    </div>
-                  </li>
-                </ul>
-                <CommentForm />
-              </section>
+              <ReviewsList reviews={reviews} />
             </div>
+            <section className="offer__map map">
+              <Map city={city} points={points} selectedPoint={selectedPoint} />
+            </section>
           </div>
-          <section className="offer__map map"></section>
         </section>
         <div className="container">
-          <section className="near-places places">
-            <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <div className="near-places__list places__list">
-              <article className="near-places__card place-card">
-                <div className="near-places__image-wrapper place-card__image-wrapper">
-                  <a href="#">
-                    <img className="place-card__image" src="img/room.jpg" width="260" height="200" alt="Place image" />
-                  </a>
-                </div>
-                <div className="place-card__info">
-                  <div className="place-card__price-wrapper">
-                    <div className="place-card__price">
-                      <b className="place-card__price-value">&euro;80</b>
-                      <span className="place-card__price-text">&#47;&nbsp;night</span>
-                    </div>
-                    <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
-                      <svg className="place-card__bookmark-icon" width="18" height="19">
-                        <use xlinkHref="#icon-bookmark"></use>
-                      </svg>
-                      <span className="visually-hidden">In bookmarks</span>
-                    </button>
-                  </div>
-                  <div className="place-card__rating rating">
-                    <div className="place-card__stars rating__stars">
-                      <span style={{ width: '80%' }}></span>
-                      <span className="visually-hidden">Rating</span>
-                    </div>
-                  </div>
-                  <h2 className="place-card__name">
-                    <a href="#">Wood and stone place</a>
-                  </h2>
-                  <p className="place-card__type">Room</p>
-                </div>
-              </article>
-            </div>
-          </section>
+          <NearPlacesList offers={offers} />
         </div>
       </main>
     </>

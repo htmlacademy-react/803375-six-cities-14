@@ -1,10 +1,10 @@
 import SEO from '../../components/SEO';
 import FavoritesList from '../../components/favorites-list';
 
-import {OffersType} from '../../types/offers';
+import {TOffers} from '../../types/offers';
 
 type FavoritesScreenProps = {
-	offers: OffersType;
+	offers: TOffers;
 	pageTitle: string;
 }
 

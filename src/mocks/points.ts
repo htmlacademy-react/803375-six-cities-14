@@ -1,6 +1,6 @@
-import {Points} from '../types/points';
+import {TPoints} from '../types/points';
 
-export const POINTS: Points = [
+export const POINTS: TPoints = [
   {
     title: 'Beautiful & luxurious studio at great location 1',
     lat: 52.3909553943508,
